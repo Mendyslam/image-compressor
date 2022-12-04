@@ -120,7 +120,7 @@ def compress(picture, filename, square, crop=None):
     # Changeable constants
     pictureQuality = 80
     lazyPictureQuality = 10
-    
+    """
     minSizes = ([['S', 50],
                  ['M', 200],
                  ['L', 400]] if square else [['XS', 480],
@@ -128,7 +128,8 @@ def compress(picture, filename, square, crop=None):
                                              ['M', 1080],
                                              ['L', 1280],
                                              ['XL', 1440],
-                                             ['XXL', 2160]])
+                                             ['XXL', 2160]])"""
+    minSizes = ([list(picture.size)])
     minLazySize = 50 if square else 200
     
     # Make the image compression
