@@ -120,7 +120,6 @@ def compress(picture, filename, square, crop=None):
     # Changeable constants
     pictureQuality = 80
     lazyPictureQuality = 10
-    """
     minSizes = ([['S', 50],
                  ['M', 200],
                  ['L', 400]] if square else [['XS', 480],
@@ -128,8 +127,7 @@ def compress(picture, filename, square, crop=None):
                                              ['M', 1080],
                                              ['L', 1280],
                                              ['XL', 1440],
-                                             ['XXL', 2160]])"""
-    minSizes = ([list(picture.size)])
+                                             ['XXL', 2160]])
     minLazySize = 50 if square else 200
     
     # Make the image compression
@@ -142,8 +140,8 @@ def compress(picture, filename, square, crop=None):
     
     # Compress the image with each resolution.
     for res, minSize in minSizes:
-        size = ([minSize*newAspectRatio, minSize] if horizontal else
-               [minSize, minSize*newAspectRatio])
+        size = ([picture.size[0]*newAspectRatio, picture.size[1]] if horizontal else
+               [picture.size[0], picture.size[1]*newAspectRatio])
         
         prefix = 'SQ-' if square else 'FULL-'
         name = prefix + res + '-' + filename + '.JPEG'
